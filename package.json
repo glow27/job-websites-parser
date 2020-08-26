@@ -20,7 +20,10 @@
   },
   "homepage": "https://github.com/glow27/job-websites-parser#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "hbs": "^4.1.1"
+    "hbs": "^4.1.1",
+    "mongoose": "^5.10.0",
+    "morgan": "^1.10.0"
   }
 }
