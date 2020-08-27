@@ -1,8 +1,11 @@
 const express = require('express');
 
-const app = express();
+const middleware = require('./middleware/index')
+const parseHH = require('./utils/parser/parseHH')
 
-const middleWare = require('./middleware/index');
+const app = express();
+middleware(app);
+
 
 middleWare(app);
 
