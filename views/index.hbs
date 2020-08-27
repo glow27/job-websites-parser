@@ -102,14 +102,22 @@
 <div style="height: 20px;"></div>
 <div class="container">
   <ul class="pagination center">
-    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    {{#if prev}}
+    <li class="waves-effect"><a href="/?page={{prev}}"><i class="material-icons">chevron_left</i></a></li>
+    {{else}}
+    <li class="waves-effect"><a class="btn disabled" href=""><i class="material-icons">chevron_left</i></a></li>
+    {{/if}}
     {{#each pages}}
-    <li class="waves-effect"><a href="/?page={{num}}">{{num}}</a></li>
+    <li class="waves-effect" id="el{{num}}"><a href="/?page={{num}}">{{num}}</a></li>
     {{/each}}
-    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    {{#if next}}
+    <li class="waves-effect"><a href="/?page={{next}}"><i class="material-icons">chevron_right</i></a></li>
+    {{else}}
+    <li class="waves-effect"><a href="" class="btn disabled"><i class="material-icons">chevron_right</i></a></li>
+    {{/if}}
   </ul>
 </div>
-
+<div style="height: 50px;"></div>
 
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -120,4 +128,9 @@
     $('.modal').modal();
 
   });
+
+  const uList = document.querySelector('.pagination');
+  const ind = document.location.href.charAt(document.location.href.length - 1)
+  const activeBtn = document.querySelector(`#el${ind}`);
+  activeBtn.classList.add('active')
 </script>
