@@ -17,11 +17,11 @@
           </div>
           <div class="input-field">
             <input type="email" id="email" class="validate" name="email" required>
-            <label  for="email">email</label>
+            <label for="email">email</label>
           </div>
           <div class="input-field">
             <input type="text" id="password" name="password" required>
-            <label  for="password">password</label>
+            <label for="password">password</label>
           </div>
           <div>
             <button class="btn" type="submit">Submit
@@ -38,11 +38,11 @@
         <form id="user-login" action="/login">
           <div class="input-field">
             <input type="email" id="email" class="validate" name="email" required>
-            <label  for="email">email</label>
+            <label for="email">email</label>
           </div>
           <div class="input-field">
-            <input type="text"  id="password" name="password" required>
-            <label  for="password">password</label>
+            <input type="text" id="password" name="password" required>
+            <label for="password">password</label>
           </div>
           <div>
             <button class="btn" type="submit">Submit
@@ -78,20 +78,23 @@
 <div class="container">
 
   <ul class="collection">
+    {{#each onePage}}
     <li class="collection-item">
 
-      <a href="#">vacation title</a>
       <a href="#" class="right" onclick="M.toast({html: 'added'})"><i class="material-icons">star</i></a>
-      <p>description</p>
+      <h5>{{offer}}</h5>
+
+      <a href={{href}}>{{offer}}</a>
 
     </li>
-    <li class="collection-item">
+    {{/each}}
+    {{!-- <li class="collection-item">
 
       <a href="#">vacation title</a>
       <a href="#" class="right"><i class="material-icons">star</i></a>
       <p>description</p>
 
-    </li>
+    </li> --}}
 
   </ul>
 
@@ -100,11 +103,9 @@
 <div class="container">
   <ul class="pagination center">
     <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-    <li class="active"><a href="#!">1</a></li>
-    <li class="waves-effect"><a href="#!">2</a></li>
-    <li class="waves-effect"><a href="#!">3</a></li>
-    <li class="waves-effect"><a href="#!">4</a></li>
-    <li class="waves-effect"><a href="#!">5</a></li>
+    {{#each pages}}
+    <li class="waves-effect"><a href="/?page={{num}}">{{num}}</a></li>
+    {{/each}}
     <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
   </ul>
 </div>
