@@ -8,7 +8,8 @@ const cvSchema = Schema({
   experience: String,
   lastWork: String,
   href: String,
-  type: String
+  type: String,
+  from: String
 })
 
-module.exports = mongoose.model('cv-hh', cvSchema)
+module.exports = mongoose.model('cv-third-party', cvSchema)

@@ -7,6 +7,7 @@ const vacSchema = Schema({
   href: String,
   publicDate: String,
   type: String,
+  from: String
 })
 
-module.exports = mongoose.model('vacancy-hh', vacSchema)
+module.exports = mongoose.model('vacancy-third-party', vacSchema)

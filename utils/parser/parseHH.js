@@ -37,7 +37,8 @@ async function run(url, settings) {
         salary: offerData.salary,
         href: offerData.href,
         publicDate: offerData.publicDate,
-        type: settings.profession
+        type: settings.profession,
+        from: 'headhunter'
       })
 
       await newVacancy.save()
@@ -62,7 +63,8 @@ async function run(url, settings) {
         experience: resumeData.experience,
         lastWork: resumeData.lastWork,
         href: resumeData.href,
-        type: settings.profession
+        type: settings.profession,
+        from: 'headhunter'
       })
 
       await newCV.save()
