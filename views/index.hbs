@@ -10,21 +10,21 @@
 
     <div class="modal" id="register">
       <div class="modal-content">
-        <form>
+        <form id="reg" action="/login" method="POST">
           <div class="input-field">
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name" required>
             <label class="active" for="name">name</label>
           </div>
           <div class="input-field">
-            <input type="email" id="email" class="validate" name="email">
-            <label  for="email">Email</label>
+            <input type="email" id="email" class="validate" name="email" required>
+            <label  for="email">email</label>
           </div>
           <div class="input-field">
-            <input type="text" id="password" name="password">
+            <input type="text" id="password" name="password" required>
             <label  for="password">password</label>
           </div>
           <div>
-            <button class="btn" type="submit" action="">Submit
+            <button class="btn" type="submit">Submit
 
             </button>
 
@@ -35,17 +35,17 @@
 
     <div class="modal" id="login">
       <div class="modal-content">
-        <form>
+        <form id="user-login" action="/login">
           <div class="input-field">
-            <input type="email" id="email" class="validate" name="email">
-            <label class="active" for="email">Email</label>
+            <input type="email" id="email" class="validate" name="email" required>
+            <label  for="email">email</label>
           </div>
           <div class="input-field">
-            <input type="text" id="password" name="password">
-            <label class="active" for="password">password</label>
+            <input type="text"  id="password" name="password" required>
+            <label  for="password">password</label>
           </div>
           <div>
-            <button class="btn" type="submit" action="">Submit
+            <button class="btn" type="submit">Submit
 
             </button>
 
