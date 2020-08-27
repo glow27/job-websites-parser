@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function middleWare(app) {
   const express = require('express')
   const morgan = require('morgan')
   const cookieParser = require('cookie-parser')
@@ -6,6 +6,7 @@ module.exports = function(app) {
   const keys = require('../keys/keys')
   const mongoose = require('mongoose')
   console.log(keys.mongoKey)
+
 
   mongoose.connect(keys.mongoKey, {
     useNewUrlParser: true,
@@ -21,3 +22,4 @@ module.exports = function(app) {
   app.set('view engine', 'hbs')
   app.set('views', path.join(__dirname, '..', './views'))
 }
+
