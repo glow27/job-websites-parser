@@ -20,41 +20,52 @@
 
 <div class="container">
 
-    <ul class="collection">
-        <li class="collection-item">
 
-            <a href="#">vacation title</a>
-            <a href="#" class="right" onclick="M.toast({html: 'added'})"><i
-                    class="material-icons">star</i></a>
-            <p>description</p>
+  <ul class="collection">
+    {{#each onePage}}
+    <li class="collection-item">
 
-        </li>
-        <li class="collection-item">
+      <a href="#" class="right" onclick="M.toast({html: 'added'})"><i class="material-icons">star</i></a>
+      <h5>{{offer}}</h5>
+
+      <a href={{href}}>{{offer}}</a>
+
+    </li>
+    {{/each}}
+    {{!-- <li class="collection-item">
+
 
             <a href="#">vacation title</a>
             <a href="#" class="right"><i class="material-icons">star</i></a>
             <p>description</p>
 
-        </li>
+    </li> --}}
+
 
     </ul>
 
 </div>
 <div style="height: 20px;"></div>
 <div class="container">
-    <ul class="pagination center">
-        <li class="disabled"><a href="#!"><i
-                class="material-icons">chevron_left</i></a></li>
-        <li class="active"><a href="#!">1</a></li>
-        <li class="waves-effect"><a href="#!">2</a></li>
-        <li class="waves-effect"><a href="#!">3</a></li>
-        <li class="waves-effect"><a href="#!">4</a></li>
-        <li class="waves-effect"><a href="#!">5</a></li>
-        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a>
-        </li>
-    </ul>
-</div>
 
+  <ul class="pagination center">
+    {{#if prev}}
+    <li class="waves-effect"><a href="/?page={{prev}}"><i class="material-icons">chevron_left</i></a></li>
+    {{else}}
+    <li class="waves-effect"><a class="btn disabled" href=""><i class="material-icons">chevron_left</i></a></li>
+    {{/if}}
+    {{#each pages}}
+    <li class="waves-effect" id="el{{num}}"><a href="/?page={{num}}">{{num}}</a></li>
+    {{/each}}
+    {{#if next}}
+    <li class="waves-effect"><a href="/?page={{next}}"><i class="material-icons">chevron_right</i></a></li>
+    {{else}}
+    <li class="waves-effect"><a href="" class="btn disabled"><i class="material-icons">chevron_right</i></a></li>
+    {{/if}}
+  </ul>
+
+</div>
+<div style="height: 50px;"></div>
 
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -64,5 +75,12 @@
         // Init Modal
         $('.modal').modal()
 
-    })
+
+  });
+
+  const uList = document.querySelector('.pagination');
+  const ind = document.location.href.charAt(document.location.href.length - 1)
+  const activeBtn = document.querySelector(`#el${ind}`);
+  activeBtn.classList.add('active')
+
 </script>
