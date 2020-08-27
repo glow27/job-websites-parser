@@ -9,7 +9,6 @@ const cvRouter = require('./routes/cv')
 const app = express();
 middleware(app);
 
-
 app.use('/api/auth', authRouter)
 app.use('/api/vacancy', vacancyRouter)
 app.use('/api/cv', cvRouter)
