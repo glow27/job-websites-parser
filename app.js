@@ -2,12 +2,13 @@ const express = require('express');
 
 const app = express();
 
+const basicRouter = require('./routes/basicRouts');
 const middleWare = require('./middleware/index');
+const sessionConfig = require('./middleware/sessionConfig');
 
 middleWare(app);
+sessionConfig(app);
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
+app.use('/', basicRouter);
 
 module.exports = app;
