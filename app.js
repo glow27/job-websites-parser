@@ -1,15 +1,21 @@
 const express = require('express');
 
 const middleware = require('./middleware/index')
-const parseHH = require('./utils/parser/parseHH')
+const authRouter = require('./routes/auth')
+const vacancyRouter = require('./routes/vacancy')
+const cvRouter = require('./routes/cv')
 
 const app = express();
 middleware(app);
 
+app.use('/api/auth', authRouter)
+app.use('/api/vacancy', vacancyRouter)
+app.use('/api/cv', cvRouter)
 
-middleWare(app);
+
 
 app.get('/', (req, res) => {
+  console.log(req.user)
   res.render('index');
 });
 

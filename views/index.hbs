@@ -1,122 +1,68 @@
-<nav class="nav-wrapper">
 
-  <ul>
-    <li class="left"><a href="">home</a></li>
-    <li class="left"><a href="">vacancies</a></li>
-    <li class="left"><a href="">resumes</a></li>
-
-    <li class="right"><a href="#register" class="modal-trigger">registration</a></li>
-    <li class="right"><a href="#login" class="modal-trigger">login</a></li>
-
-    <div class="modal" id="register">
-      <div class="modal-content">
-        <form>
-          <div class="input-field">
-            <input type="text" id="name" name="name">
-            <label class="active" for="name">name</label>
-          </div>
-          <div class="input-field">
-            <input type="email" id="email" class="validate" name="email">
-            <label  for="email">Email</label>
-          </div>
-          <div class="input-field">
-            <input type="text" id="password" name="password">
-            <label  for="password">password</label>
-          </div>
-          <div>
-            <button class="btn" type="submit" action="">Submit
-
-            </button>
-
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="modal" id="login">
-      <div class="modal-content">
-        <form>
-          <div class="input-field">
-            <input type="email" id="email" class="validate" name="email">
-            <label class="active" for="email">Email</label>
-          </div>
-          <div class="input-field">
-            <input type="text" id="password" name="password">
-            <label class="active" for="password">password</label>
-          </div>
-          <div>
-            <button class="btn" type="submit" action="">Submit
-
-            </button>
-
-          </div>
-        </form>
-      </div>
-    </div>
-
-  </ul>
-
-</nav>
 <div style="height: 50px;"></div>
 <div class="container">
 
-  <div class="container"></div>
-  <nav>
-    <div class="nav-wrapper">
-      <form>
-        <div class="input-field">
-          <input id="search" name="search" type="search" required>
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
+    <div class="container"></div>
+    <nav>
+        <div class="nav-wrapper">
+            <form>
+                <div class="input-field">
+                    <input id="search" name="search" type="search" required>
+                    <label class="label-icon" for="search"><i
+                            class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
         </div>
-      </form>
-    </div>
-  </nav>
+    </nav>
 </div>
 <div style="height: 50px;"></div>
 
 <div class="container">
 
-  <ul class="collection">
-    <li class="collection-item">
+    <ul class="collection">
+        <li class="collection-item">
 
-      <a href="#">vacation title</a>
-      <a href="#" class="right" onclick="M.toast({html: 'added'})"><i class="material-icons">star</i></a>
-      <p>description</p>
+            <a href="#">vacation title</a>
+            <a href="#" class="right" onclick="M.toast({html: 'added'})"><i
+                    class="material-icons">star</i></a>
+            <p>description</p>
 
-    </li>
-    <li class="collection-item">
+        </li>
+        <li class="collection-item">
 
-      <a href="#">vacation title</a>
-      <a href="#" class="right"><i class="material-icons">star</i></a>
-      <p>description</p>
+            <a href="#">vacation title</a>
+            <a href="#" class="right"><i class="material-icons">star</i></a>
+            <p>description</p>
 
-    </li>
+        </li>
 
-  </ul>
+    </ul>
 
 </div>
 <div style="height: 20px;"></div>
 <div class="container">
-  <ul class="pagination center">
-    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-    <li class="active"><a href="#!">1</a></li>
-    <li class="waves-effect"><a href="#!">2</a></li>
-    <li class="waves-effect"><a href="#!">3</a></li>
-    <li class="waves-effect"><a href="#!">4</a></li>
-    <li class="waves-effect"><a href="#!">5</a></li>
-    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-  </ul>
+    <ul class="pagination center">
+        <li class="disabled"><a href="#!"><i
+                class="material-icons">chevron_left</i></a></li>
+        <li class="active"><a href="#!">1</a></li>
+        <li class="waves-effect"><a href="#!">2</a></li>
+        <li class="waves-effect"><a href="#!">3</a></li>
+        <li class="waves-effect"><a href="#!">4</a></li>
+        <li class="waves-effect"><a href="#!">5</a></li>
+        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a>
+        </li>
+    </ul>
 </div>
 
 
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-  $(document).ready(function () {
+    $(document).ready(function() {
 
-    // Init Modal
-    $('.modal').modal();
+        // Init Modal
+        $('.modal').modal()
 
-  });
+    })
 </script>
