@@ -1,9 +1,11 @@
 const getPage = require('./getPage')
 const Vacancy = require('../../models/Vacancy')
 const CV = require('../../models/CV')
+const Profession = require('../../models/Profession')
 
-async function getInformation(url, page, settings) {
+async function getInformation(url, page, settings, counter) {
   let result = []
+  console.log(url)
   const $ = await getPage(url)
   const cards = $(settings.container).each((i, el) => {
     result.push($(el))
@@ -12,9 +14,11 @@ async function getInformation(url, page, settings) {
   const nextPage = $('a[data-qa="pager-next"]')
   console.log(`Page ${page} found ${cards.length}`)
   const link = nextPage.attr('href')
-  if (link) {
+  console.log(counter !== settings.counter, counter, settings.counter)
+  if (link && counter !== settings.counter) {
+    counter++
     const nextCards = await getInformation(
-        'https://hh.ru' + link, ++page, settings)
+        'https://hh.ru' + link, ++page, settings, counter)
     result = result.concat(nextCards)
   }
   return result
@@ -22,15 +26,16 @@ async function getInformation(url, page, settings) {
 
 async function run(url, settings) {
   const result = []
-  const cards = await getInformation(url, 1, settings)
-  if (settings.type === 'vacations') {
+  const cards = await getInformation(url, 1, settings, 0)
+  if (settings.type === 'vacancy') {
     for (const card of cards) {
       let offerData = {
         offer: card.find('.bloko-link.HH-LinkModifier').text(),
         salary: card.find('[data-qa="vacancy-serp__vacancy-compensation"]').
             text() === '' ? 'Договорная' : card.find('[data-qa="vacancy-serp__vacancy-compensation"]').text(),
         href: card.find('.bloko-link.HH-LinkModifier').attr('href'),
-        publicDate: card.find('.vacancy-serp-item__publication-date').text()
+        publicDate: card.find('.vacancy-serp-item__publication-date').text(),
+        company: card.find('[data-qa="vacancy-serp__vacancy-employer"]').text()
       }
       const newVacancy = new Vacancy({
         offer: offerData.offer,
@@ -38,9 +43,9 @@ async function run(url, settings) {
         href: offerData.href,
         publicDate: offerData.publicDate,
         type: settings.profession,
+        company: offerData.company,
         from: 'headhunter'
       })
-
       await newVacancy.save()
 
       result.push(offerData)
@@ -74,20 +79,30 @@ async function run(url, settings) {
   return result
 }
 
-module.exports = async function parse(url, type) {
+module.exports = async function parse(url, counter, profession,type) {
   try {
-    const profession = decodeURIComponent(url.slice(url.indexOf('text='), url.lastIndexOf('&')).slice(5, url.length).replace(/\+/g, ' '))
     let settings = {}
-    if (type === 'vacations') {
+    const candidate = await Profession.findOne({name: profession})
+    if (!candidate) {
+      const newProf = new Profession({
+        name: profession
+      })
+      await newProf.save()
+    }
+    if (type === 'vacancy') {
       settings = {
         container: '[data-qa="vacancy-serp__vacancy"]',
         type,
+        counter
       }
+      await Vacancy.deleteMany({type: profession})
     } else {
       settings = {
         container: '[data-qa="resume-serp__resume"]',
-        type
+        type,
+        counter
       }
+      await CV.deleteMany({type: profession})
     }
     settings.profession = profession
     console.log('>>>>>>>>>>>>>>START<<<<<<<<<<<<<<')

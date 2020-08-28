@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
 
-    <script defer src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet"
+          href="/css/style.css">
 
     <!-- Compiled and minified JavaScript -->
     <script defer
@@ -26,19 +27,20 @@
 <nav class="nav-wrapper">
 
     <ul>
-        <li class="left"><a href="">home</a></li>
-        <li class="left"><a href="">vacancies</a></li>
-        <li class="left"><a href="">resumes</a></li>
+        <li class="left"><a href="/">Главная</a></li>
+        <li class="left"><a href="/api/vacancy/?page=1">Вакансии</a></li>
+        <li class="left"><a href="/api/cv/?page=1">Резюме</a></li>
+        <li class="left"><a href="/api/parser">Обновить базу данных</a></li>
 
         {{#if user}}
             <li class="right"><a href="/api/auth/logout"
-                                 class="modal-trigger">Log out</a></li>
+                                 class="modal-trigger">Выйти</a></li>
             <li class="right"><a href="/profile"
-                                 class="modal-trigger">Profile</a></li>
+                                 class="modal-trigger">Профиль</a></li>
         {{else}}
             <li class="right"><a href="#register"
-                                 class="modal-trigger">registration</a></li>
-            <li class="right"><a href="#login" class="modal-trigger">login</a></li>
+                                 class="modal-trigger">Регистрация</a></li>
+            <li class="right"><a href="#login" class="modal-trigger">Логин</a></li>
 
             <div class="modal" id="register">
                 <div class="modal-content">
@@ -115,5 +117,11 @@
 
 </nav>
 {{{body}}}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script >
+    $(document).ready(function(){
+        $('.modal').modal();
+    });
+</script>
 </body>
 </html>

@@ -7,7 +7,7 @@ const employeeSchema = Schema({
   password: {type: String, required: true, unique: true},
   status: {type: String, default: 'employee'},
   cv: {type: Schema.Types.ObjectID, ref: 'cv'},
-  wantToWork: [{type: Schema.Types.ObjectID, ref: 'vacancy'}]
+  wantToWork: [{type: Schema.Types.ObjectID, ref: 'vacancy'}],
 })
 
 module.exports = mongoose.model('employee', employeeSchema)

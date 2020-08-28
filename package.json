@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon --ignore sessions"
+    "start": "nodemon --ignore sessions"
   },
   "repository": {
     "type": "git",
@@ -34,9 +34,9 @@
     "node-gyp": "^7.1.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
   }
 }

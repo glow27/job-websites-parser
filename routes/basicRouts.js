@@ -1,30 +1,21 @@
 const express = require('express');
+const Vacancy = require('../models/Vacancy')
+const CV = require('../models/CV')
+
+const getDescription = require('../utils/parser/getMoreInfo');
 
 const router = express.Router();
-const Vacancy = require('../models/Vacancy');
 
 router.get('/', async (req, res) => {
-  const limit = 5;
-  const startInd = limit * (req.query.page - 1);
-  const endInd = startInd + limit;
-  let next = +req.query.page + 1;
-  let prev = +req.query.page - 1;
-  const arr = await Vacancy.find({}).limit(32);
-  const onePage = arr.slice(startInd, endInd);
-  const total = Math.ceil(arr.length / limit);
-  if (prev <= 0) prev = false;
-  if (next > total) next = false;
-  const pages = [];
-  for (let i = 1; i <= total; i += 1) {
-    pages.push({ num: i });
-  }
-  res.render('index', { onePage, pages, prev, next });
+  const cv = await CV.find({}).limit(5)
+  const vacancy = await Vacancy.find({}).limit(5)
+  
+  res.render('main', {cv, vacancy});
 });
 
-// router.get('/logout', (req, res) => {
-//   req.session.destroy();
-//   res.clearCookie('user_sid');
-//   res.redirect('/');
-// });
+router.post('/info', async (req, res) => {
+  const addInfo = await getDescription(req.body.id);
+  res.send(addInfo);
+});
 
 module.exports = router;

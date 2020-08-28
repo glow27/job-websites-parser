@@ -6,6 +6,7 @@ const vacSchema = Schema({
   salary: String,
   href: String,
   publicDate: String,
+  company: String,
   type: String,
   description: String,
   creatorId: {type: Schema.Types.ObjectID, ref: 'employer'},
