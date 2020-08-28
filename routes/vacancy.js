@@ -1,4 +1,5 @@
 const express = require('express')
+
 const router = express.Router()
 const Vacancy = require('../models/Vacancy')
 const Professions = require('../models/Profession')

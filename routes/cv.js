@@ -5,6 +5,7 @@ const Professions = require('../models/Profession')
 const CV = require('../models/CV')
 
 router.route('/')
+
 .get(async (req, res) => {
   let profession = req.query.profession
   console.log(profession)

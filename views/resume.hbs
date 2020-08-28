@@ -23,14 +23,18 @@
     <ul class="collection">
         {{#each onePage}}
             <li class="collection-item">
-                {{#if ../userStatus}}
-                    <a href="#" class="right"
-                       onclick="M.toast({html: 'added'})"><i
-                            class="material-icons">star</i></a>
-                {{/if}}
-                <a href={{href}}><h5>{{position}}</h5></a>
-                <p>age: {{age}}</p>
-                <p>experience: {{experience}}</p>
+            {{#if ../userStatus}}
+                <a href="#" class="right" onclick="M.toast({html: 'added'})"><i
+                        class="material-icons">star</i></a>
+            {{/if}}
+            <a href={{href}}><h5>{{position}}</h5></a>
+
+                <p><b> Возраст:</b>  {{age}}</p>
+                <p><b> Последнее место работы: </b> {{lastWork}}</p>
+                <p><b> Опыт:</b>  {{experience}}, <b> зарплата</b>  {{salary}}</p>
+
+
+
             </li>
         {{/each}}
     </ul>
