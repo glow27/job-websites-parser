@@ -1,6 +1,7 @@
 const getPage = require('./getPage')
 const Vacancy = require('../../models/Vacancy')
 const CV = require('../../models/CV')
+const Profession = require('../../models/Profession')
 
 async function getInformation(url, page, settings, counter) {
   let result = []
@@ -45,7 +46,6 @@ async function run(url, settings) {
         company: offerData.company,
         from: 'headhunter'
       })
-
       await newVacancy.save()
 
       result.push(offerData)
@@ -82,18 +82,27 @@ async function run(url, settings) {
 module.exports = async function parse(url, counter, profession,type) {
   try {
     let settings = {}
+    const candidate = await Profession.findOne({name: profession})
+    if (!candidate) {
+      const newProf = new Profession({
+        name: profession
+      })
+      await newProf.save()
+    }
     if (type === 'vacancy') {
       settings = {
         container: '[data-qa="vacancy-serp__vacancy"]',
         type,
         counter
       }
+      await Vacancy.deleteMany({type: profession})
     } else {
       settings = {
         container: '[data-qa="resume-serp__resume"]',
         type,
         counter
       }
+      await CV.deleteMany({type: profession})
     }
     settings.profession = profession
     console.log('>>>>>>>>>>>>>>START<<<<<<<<<<<<<<')

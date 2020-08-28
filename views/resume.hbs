@@ -1,3 +1,4 @@
+<script defer src="/js/sorter.js"></script>
 <div style="height: 20px;"></div>
 <div class="container">
     <h4 class="red-text darken-4">RESUMES:</h4>
@@ -5,33 +6,33 @@
 <div style="height: 20px;"></div>
 
 <div class="container">
-
+    <div class="input-field col s12">
+        <select>
+            {{#if profession}}
+                <option value="{{profession}}" disabled selected>{{profession}}</option>
+            {{else}}
+                <option value="" disabled selected>Выберите профессию</option>
+            {{/if}}
+                {{#each professions}}
+                    <option value="{{this.name}}">{{this.name}}</option>
+                {{/each}}
+        </select>
+        <label>Выберите профессию для резюме</label>
+    </div>
 
     <ul class="collection">
         {{#each onePage}}
             <li class="collection-item">
-            {{#if ../userStatus}}
-                <a href="#" class="right" onclick="M.toast({html: 'added'})"><i
-                        class="material-icons">star</i></a>
-            {{/if}}
-            <a href={{href}}><h5>{{position}}</h5></a>
-
+                {{#if ../userStatus}}
+                    <a href="#" class="right"
+                       onclick="M.toast({html: 'added'})"><i
+                            class="material-icons">star</i></a>
+                {{/if}}
+                <a href={{href}}><h5>{{position}}</h5></a>
                 <p>age: {{age}}</p>
                 <p>experience: {{experience}}</p>
-
-
             </li>
         {{/each}}
-        {{!-- <li class="collection-item">
-
-
-                <a href="#">vacation title</a>
-                <a href="#" class="right"><i class="material-icons">star</i></a>
-                <p>description</p>
-
-        </li> --}}
-
-
     </ul>
 
 </div>
@@ -40,19 +41,47 @@
 
     <ul class="pagination center">
         {{#if prev}}
-            <li class="waves-effect"><a href="/api/cv/?page={{prev}}"><i
-                    class="material-icons">chevron_left</i></a></li>
+            <li class="waves-effect">
+                {{#if profession}}
+                    <a href="/api/cv/?page={{prev}}&profession={{profession}}">
+                    <i class="material-icons">chevron_left</i>
+                    </a>
+                {{else}}
+                    <a href="/api/cv/?page={{prev}}">
+                    <i class="material-icons">chevron_left</i>
+                    </a>
+                {{/if}}
+            </li>
         {{else}}
-            <li class="waves-effect"><a class="btn disabled" href=""><i
-                    class="material-icons">chevron_left</i></a></li>
+            <li class="waves-effect">
+                <a class="btn disabled" href="">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
         {{/if}}
         {{#each pages}}
-            <li class="waves-effect" id="el{{num}}"><a
-                    href="/api/cv/?page={{num}}">{{num}}</a></li>
+            {{#if ../profession}}
+                <li class="waves-effect" id="el{{num}}">
+                    <a href="/api/cv/?page={{num}}&profession={{../profession}}">{{num}}</a>
+                </li>
+        {{else}}
+                <li class="waves-effect" id="el{{num}}">
+                    <a href="/api/cv/?page={{num}}">{{num}}</a>
+                </li>
+        {{/if}}
         {{/each}}
         {{#if next}}
-            <li class="waves-effect"><a href="/api/cv/?page={{next}}"><i
-                    class="material-icons">chevron_right</i></a></li>
+            <li class="waves-effect">
+                {{#if profession}}
+                    <a href="/api/cv/?page={{next}}&profession={{profession}}">
+                    <i class="material-icons">chevron_right</i>
+                    </a>
+                {{else}}
+                    <a href="/api/cv/?page={{next}}">
+                    <i class="material-icons">chevron_right</i>
+                    </a>
+                {{/if}}
+            </li>
         {{else}}
             <li class="waves-effect"><a href="" class="btn disabled"><i
                     class="material-icons">chevron_right</i></a></li>
@@ -73,8 +102,14 @@
     })
 
     const uList = document.querySelector('.pagination')
-    const ind = document.location.href.charAt(document.location.href.length - 1)
+    const ind = document.location.href.charAt(document.location.href.indexOf
+    ('=') + 1)
     const activeBtn = document.querySelector(`#el${ind}`)
     activeBtn.classList.add('active')
+    // Or with jQuery
 
+    $(document).ready(function() {
+        $('select').formSelect()
+    })
 </script>
+
