@@ -1,9 +1,8 @@
 <div style="height: 20px;"></div>
 <div class="container">
-  <h4 class="red-text darken-4">VACANCIES:</h4>
+  <h4 class="red-text darken-4">RESUMES:</h4>
 </div>
 <div style="height: 20px;"></div>
-
 
 <div class="container">
 
@@ -13,18 +12,13 @@
     <li class="collection-item">
 
       <a href="#" class="right" onclick="M.toast({html: 'added'})"><i class="material-icons">star</i></a>
-      <h5>{{offer}}</h5>
+      <a href={{href}}><h5>{{position}}</h5></a>
 
-      <a class="btn modal-trigger additional" action="/info" href="#details">DETAILS</a>
+      <p>age: {{age}}</p>
+      <p>experience: {{experience}}</p>
 
-      <div class="modal" id="details">
-        <div class="modal-content">
-          <p>description: </p>
-          <p>experience: </p>
-          <p>location:  </p>
-          <a href={{href}}>details on hh.ru</a>
-        </div>
-      </div>
+      
+
     </li>
     {{/each}}
     {{!-- <li class="collection-item">
@@ -45,15 +39,15 @@
 
   <ul class="pagination center">
     {{#if prev}}
-    <li class="waves-effect"><a href="/api/vacancy/?page={{prev}}"><i class="material-icons">chevron_left</i></a></li>
+    <li class="waves-effect"><a href="/api/cv/?page={{prev}}"><i class="material-icons">chevron_left</i></a></li>
     {{else}}
     <li class="waves-effect"><a class="btn disabled" href=""><i class="material-icons">chevron_left</i></a></li>
     {{/if}}
     {{#each pages}}
-    <li class="waves-effect" id="el{{num}}"><a href="/api/vacancy/?page={{num}}">{{num}}</a></li>
+    <li class="waves-effect" id="el{{num}}"><a href="/api/cv/?page={{num}}">{{num}}</a></li>
     {{/each}}
     {{#if next}}
-    <li class="waves-effect"><a href="/api/vacancy/?page={{next}}"><i class="material-icons">chevron_right</i></a></li>
+    <li class="waves-effect"><a href="/api/cv/?page={{next}}"><i class="material-icons">chevron_right</i></a></li>
     {{else}}
     <li class="waves-effect"><a href="" class="btn disabled"><i class="material-icons">chevron_right</i></a></li>
     {{/if}}
@@ -67,23 +61,15 @@
 <script>
     $(document).ready(function() {
 
-  // Init Modal
-  $('.modal').modal()
+        // Init Modal
+        $('.modal').modal()
 
 
-});
+  });
 
-const uList = document.querySelector('.pagination');
-const ind = document.location.href.charAt(document.location.href.length - 1)
-const activeBtn = document.querySelector(`#el${ind}`);
-activeBtn.classList.add('active')
-
-
-const btn = document.querySelectorAll('.additional')
-
-console.log(btn)
-
-  
+  const uList = document.querySelector('.pagination');
+  const ind = document.location.href.charAt(document.location.href.length - 1)
+  const activeBtn = document.querySelector(`#el${ind}`);
+  activeBtn.classList.add('active')
 
 </script>
-{{!-- <script src="../public/js/details.js"></script> --}}

@@ -5,7 +5,7 @@ form.addEventListener('submit', registration)
 async function registration(e) {
   e.preventDefault()
   const {email, password, name, group1} = e.target
-  console.log(email.value, password.value, name.value, group1.value)
+  // console.log(email.value, password.value, name.value, group1.value)
   const body = {
     email: email.value,
     password: password.value,
