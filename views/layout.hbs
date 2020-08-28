@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
 
-    <script defer src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+
+  <script defer src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet"
@@ -11,23 +13,24 @@
     <link rel="stylesheet"
           href="/css/style.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script defer
-            src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-    <script defer src="/js/registration.js"></script>
-    <script defer src="/js/login.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script defer src="/js/registration.js"></script>
+  <script defer src="/js/login.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-<nav class="nav-wrapper">
+  <nav class="nav-wrapper">
 
     <ul>
+
         <li class="left"><a href="/">Главная</a></li>
         <li class="left"><a href="/api/vacancy">Вакансии</a></li>
         <li class="left"><a href="/api/cv">Резюме</a></li>
@@ -78,45 +81,88 @@
                         </div>
                     </form>
                 </div>
+
             </div>
-
-            <div class="modal" id="login">
-                <div class="modal-content">
-                    <form id="logForm">
-                        <div class="input-field">
-                            <input type="email" id="email" name="email">
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="text" id="password" name="password">
-                            <label for="password">password</label>
-                        </div>
-                        <p>
-                            <label>
-                                <input class="with-gap" name="group1" type="radio"
-                                       value="employee"/>
-                                <span>Соискатель</span>
-                            </label>
-                            <label>
-                                <input class="with-gap" name="group1" type="radio"
-                                       value="employer"/>
-                                <span>Работадатель</span>
-                            </label>
-                        </p>
-                        <div>
-                            <button class="btn" type="submit" action="">Submit
-
-                            </button>
-
-                        </div>
-                    </form>
-                </div>
+            <div class="input-field">
+              <input type="text" id="password" name="password">
+              <label for="password">Password</label>
             </div>
-        {{/if}}
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" value="employee" />
+                <span>Соискатель</span>
+              </label>
+              <label>
+                <input class="with-gap" name="group1" type="radio" value="employer" />
+                <span>Работадатель</span>
+              </label>
+            </p>
+            <div>
+              <button class="btn" type="submit" action="">Submit
+
+              </button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal" id="login">
+        <div class="modal-content">
+          <form id="logForm">
+            <div class="input-field">
+              <input type="email" id="email" name="email">
+              <label for="email">Email</label>
+            </div>
+            <div class="input-field">
+              <input type="text" id="password" name="password">
+              <label for="password">password</label>
+            </div>
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" value="employee" />
+                <span>Соискатель</span>
+              </label>
+              <label>
+                <input class="with-gap" name="group1" type="radio" value="employer" />
+                <span>Работадатель</span>
+              </label>
+            </p>
+            <div>
+              <button class="btn" type="submit" action="">Submit
+
+              </button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+      {{/if}}
 
     </ul>
 
-</nav>
-{{{body}}}
+  </nav>
+
+  <div style="height: 50px;"></div>
+  <div class="container">
+    <div class="container"></div>
+    <nav>
+      <div class="nav-wrapper">
+        <form>
+          <div class="input-field">
+            <input id="search" name="search" type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div>
+    </nav>
+
+
+
+  </div>
+
+  {{{body}}}
 </body>
+
 </html>
