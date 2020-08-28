@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router();
-
 const Vacancy = require('../models/Vacancy');
 const getDescrition = require('../utils/parser/getMoreInfo');
 

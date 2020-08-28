@@ -14,7 +14,7 @@ async function updateCv(e) {
     input,
     counter
   }
-
+  e.target.disabled = true
   const res = await fetch('/api/parser/cv', {
     method: 'PUT',
     headers: {
@@ -24,6 +24,7 @@ async function updateCv(e) {
   })
 
   const result = await res.json()
+  e.target.disabled = false
   console.log(result.result)
 }
 
@@ -35,6 +36,7 @@ async function updateVacancy(e) {
     input,
     counter
   }
+  e.target.disabled = true
   const res = await fetch('/api/parser/vacancy', {
     method: 'PUT',
     headers: {
@@ -42,8 +44,8 @@ async function updateVacancy(e) {
     },
     body: JSON.stringify(body)
   })
-
   const result = await res.json()
+  e.target.disabled = false
   console.log(result.result)
 
 }

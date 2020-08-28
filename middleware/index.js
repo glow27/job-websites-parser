@@ -5,6 +5,7 @@ module.exports = function middleWare(app) {
   const session = require('express-session')
   const MongoStore = require('connect-mongo')(session)
   const passport = require('passport')
+  const hbs = require('hbs')
   const path = require('path')
   const keys = require('../keys/keys')
   const mongoose = require('mongoose')
@@ -43,6 +44,8 @@ module.exports = function middleWare(app) {
   app.use(passport.session());
   require('../auth/passport')
   app.use(setLocal)
+
+
 
   app.set('view engine', 'hbs')
   app.set('views', path.join(__dirname, '..', './views'))

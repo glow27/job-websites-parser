@@ -1,34 +1,35 @@
 <div style="height: 20px;"></div>
 <div class="container">
-  <h4 class="red-text darken-4">RESUMES:</h4>
+    <h4 class="red-text darken-4">RESUMES:</h4>
 </div>
 <div style="height: 20px;"></div>
 
 <div class="container">
 
 
-  <ul class="collection">
-    {{#each onePage}}
-    <li class="collection-item">
+    <ul class="collection">
+        {{#each onePage}}
+            <li class="collection-item">
+            {{#if ../userStatus}}
+                <a href="#" class="right" onclick="M.toast({html: 'added'})"><i
+                        class="material-icons">star</i></a>
+            {{/if}}
+            <a href={{href}}><h5>{{position}}</h5></a>
 
-      <a href="#" class="right" onclick="M.toast({html: 'added'})"><i class="material-icons">star</i></a>
-      <a href={{href}}><h5>{{position}}</h5></a>
-
-      <p>age: {{age}}</p>
-      <p>experience: {{experience}}</p>
-
-      
-
-    </li>
-    {{/each}}
-    {{!-- <li class="collection-item">
+                <p>age: {{age}}</p>
+                <p>experience: {{experience}}</p>
 
 
-            <a href="#">vacation title</a>
-            <a href="#" class="right"><i class="material-icons">star</i></a>
-            <p>description</p>
+            </li>
+        {{/each}}
+        {{!-- <li class="collection-item">
 
-    </li> --}}
+
+                <a href="#">vacation title</a>
+                <a href="#" class="right"><i class="material-icons">star</i></a>
+                <p>description</p>
+
+        </li> --}}
 
 
     </ul>
@@ -37,21 +38,26 @@
 <div style="height: 20px;"></div>
 <div class="container">
 
-  <ul class="pagination center">
-    {{#if prev}}
-    <li class="waves-effect"><a href="/api/cv/?page={{prev}}"><i class="material-icons">chevron_left</i></a></li>
-    {{else}}
-    <li class="waves-effect"><a class="btn disabled" href=""><i class="material-icons">chevron_left</i></a></li>
-    {{/if}}
-    {{#each pages}}
-    <li class="waves-effect" id="el{{num}}"><a href="/api/cv/?page={{num}}">{{num}}</a></li>
-    {{/each}}
-    {{#if next}}
-    <li class="waves-effect"><a href="/api/cv/?page={{next}}"><i class="material-icons">chevron_right</i></a></li>
-    {{else}}
-    <li class="waves-effect"><a href="" class="btn disabled"><i class="material-icons">chevron_right</i></a></li>
-    {{/if}}
-  </ul>
+    <ul class="pagination center">
+        {{#if prev}}
+            <li class="waves-effect"><a href="/api/cv/?page={{prev}}"><i
+                    class="material-icons">chevron_left</i></a></li>
+        {{else}}
+            <li class="waves-effect"><a class="btn disabled" href=""><i
+                    class="material-icons">chevron_left</i></a></li>
+        {{/if}}
+        {{#each pages}}
+            <li class="waves-effect" id="el{{num}}"><a
+                    href="/api/cv/?page={{num}}">{{num}}</a></li>
+        {{/each}}
+        {{#if next}}
+            <li class="waves-effect"><a href="/api/cv/?page={{next}}"><i
+                    class="material-icons">chevron_right</i></a></li>
+        {{else}}
+            <li class="waves-effect"><a href="" class="btn disabled"><i
+                    class="material-icons">chevron_right</i></a></li>
+        {{/if}}
+    </ul>
 
 </div>
 <div style="height: 50px;"></div>
@@ -64,12 +70,11 @@
         // Init Modal
         $('.modal').modal()
 
+    })
 
-  });
-
-  const uList = document.querySelector('.pagination');
-  const ind = document.location.href.charAt(document.location.href.length - 1)
-  const activeBtn = document.querySelector(`#el${ind}`);
-  activeBtn.classList.add('active')
+    const uList = document.querySelector('.pagination')
+    const ind = document.location.href.charAt(document.location.href.length - 1)
+    const activeBtn = document.querySelector(`#el${ind}`)
+    activeBtn.classList.add('active')
 
 </script>

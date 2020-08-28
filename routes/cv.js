@@ -19,7 +19,7 @@ router.route('/')
     for (let i = 1; i <= total; i += 1) {
       pages.push({ num: i });
     }
-    res.render('resume', { onePage, pages, prev, next });
+    res.render('resume', { onePage, pages, prev, next, example: true });
   });
 
 module.exports = router;
