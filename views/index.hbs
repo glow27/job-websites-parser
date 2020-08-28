@@ -11,6 +11,18 @@
 <div class="container">
 
 
+        <div class="input-field col s12">
+            <select>
+                {{#if profession}}
+                    <option value="{{profession}}" disabled selected>{{profession}}</option>
+                {{else}}
+                    <option value="" disabled selected>Выберите профессию</option>
+                {{/if}}
+                {{#each professions}}
+                    <option value="{{this.name}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+            <label>Выберите профессию для резюме</label>
   <ul class="collection">
     {{#each onePage}}
     <li class="collection-item">
@@ -36,6 +48,7 @@
       </div>
     </li>
     {{/each}}
+  </ul>
     {{!-- <li class="collection-item">
 
 
@@ -45,22 +58,6 @@
 
     </li> --}}
 
-
-
-<div class="container">
-    <div class="input-field col s12">
-        <select>
-            {{#if profession}}
-                <option value="{{profession}}" disabled selected>{{profession}}</option>
-            {{else}}
-                <option value="" disabled selected>Выберите профессию</option>
-            {{/if}}
-            {{#each professions}}
-                <option value="{{this.name}}">{{this.name}}</option>
-            {{/each}}
-        </select>
-        <label>Выберите профессию для резюме</label>
-    </div>
 
 <!--    <ul class="collection">-->
 <!--        {{#each onePage}}-->
@@ -161,14 +158,13 @@
         $('select').formSelect()
     })
 
-<<<<<<< HEAD
-=======
-const btn = document.querySelectorAll('.additional')
+
+const button = document.querySelectorAll('.additional')
 const desc = document.querySelector('#desc');
   const exp = document.querySelector('#exp');
   const loc = document.querySelector('#loc');
 
-btn.forEach(b => b.addEventListener('click', async (e) => {
+button.forEach(b => b.addEventListener('click', async (e) => {
   e.preventDefault();
   desc.innerHTML = '';
   exp.innerHTML = '';
@@ -183,13 +179,12 @@ btn.forEach(b => b.addEventListener('click', async (e) => {
   });
 
   const result = await response.json();
+    console.log(result)
   desc.innerHTML = result.description;
   exp.innerHTML = result.experience;
   loc.innerHTML = result.location;
 }))
 
-
->>>>>>> 4374f085b25e5b56e0e58fa8ee48ffdc6c0fad00
 
 </script>
 {{!-- <script src="../public/js/details.js"></script> --}}

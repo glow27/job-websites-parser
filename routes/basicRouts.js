@@ -1,5 +1,5 @@
 const express = require('express');
-
+const Vacancy = require('../models/Vacancy')
 const CV = require('../models/CV')
 
 const getDescription = require('../utils/parser/getMoreInfo');
