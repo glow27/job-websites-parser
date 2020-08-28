@@ -4,7 +4,6 @@ const passport = require('passport')
 const bcrypt = require('bcrypt')
 
 module.exports.login = function(req, res) {
-  console.log(123)
   res.status(200).json({
     success: true,
     message: 'User has been logged',
