@@ -8,6 +8,8 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet"
+          href="/css/style.css">
 
     <!-- Compiled and minified JavaScript -->
     <script defer
@@ -26,9 +28,10 @@
 <nav class="nav-wrapper">
 
     <ul>
-        <li class="left"><a href="">home</a></li>
-        <li class="left"><a href="">vacancies</a></li>
-        <li class="left"><a href="">resumes</a></li>
+        <li class="left"><a href="/">Главная</a></li>
+        <li class="left"><a href="/api/vacancy">Вакансии</a></li>
+        <li class="left"><a href="/api/cv">Резюме</a></li>
+        <li class="left"><a href="/api/parser">Парсер</a></li>
 
         {{#if user}}
             <li class="right"><a href="/api/auth/logout"

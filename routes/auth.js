@@ -5,10 +5,12 @@ const router = express.Router()
 
 router.post('/login', function(req, res, next){
   passport.authenticate('local', function(err, user, info) {
-    console.log(user, info, err)
     if (!user) {
       res.json(info)
     } else {
+      req.login(user, err => {
+        if (err) console.log(err)
+      })
       next()
     }
   })(req, res, next)
