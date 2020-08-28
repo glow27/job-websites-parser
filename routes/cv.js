@@ -5,12 +5,12 @@ const CV = require('../models/CV');
 
 router.route('/')
   .get(async (req, res) => {
-    const limit = 10;
+    const limit = 8;
     const startInd = limit * (req.query.page - 1);
     const endInd = startInd + limit;
     let next = +req.query.page + 1;
     let prev = +req.query.page - 1;
-    const arr = await CV.find({}).limit(51);
+    const arr = await CV.find({}).limit(120);
     const onePage = arr.slice(startInd, endInd);
     const total = Math.ceil(arr.length / limit);
     if (prev <= 0) prev = false;

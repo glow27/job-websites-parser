@@ -15,18 +15,21 @@
 
       <a href="#" class="right" onclick="M.toast({html: 'added'})"><i class="material-icons">star</i></a>
       <h5>{{offer}}</h5>
+      <p><b> зарплата:</b>  {{salary}}</p>
+      <p><b> компания:</b>  {{company}}</p>
+      <p><b> найдено на:</b>  {{from}}, {{publicDate}}</p>
 
-      <a class="btn modal-trigger additional" id={{href}} method="post" action="/info" href="#details">DETAILS</a>
+      <a class="btn modal-trigger additional red lighten-3" id={{href}} method="post" action="/info" href="#details">Подробнее</a>
 
       <div class="modal" id="details">
         <div class="modal-content">
-          <h6>Описание</h6>
+          <h6><b>Описание</b></h6>
           <p id="desc"></p>
-          <h6>Опыт</h6>
+          <h6><b>Опыт</b></h6>
           <p id="exp"></p>
-          <h6>Место</h6>
+          <h6><b>Место</b></h6>
           <p id="loc"></p>
-          <a href={{href}}>details on hh.ru</a>
+          <a href={{href}}>источник вакансии</a>
         </div>
       </div>
     </li>
