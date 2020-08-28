@@ -9,7 +9,8 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   const cv = await CV.find({}).limit(5)
   const vacancy = await Vacancy.find({}).limit(5)
-  res.render('main', {arr:[cv, vacancy]});
+  
+  res.render('main', {cv, vacancy});
 });
 
 router.post('/info', async (req, res) => {

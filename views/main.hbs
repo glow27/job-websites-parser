@@ -1,18 +1,21 @@
 <div class="container">
-    <div class="row">
-        <div class="col s12">
-            <div class="col s6"><h2>Топ 5 вакансий</h2></div>
-            <div class="col s6"><h2>Топ 5 резюме</h2></div>
-        </div>
+  <div class="row">
+    <div class="col s12">
+      <div class="col s6">
+        <h2>Топ 5 вакансий</h2>
+        {{#each vacancy}}
+        <a href={{href}}> <p>{{offer}}</p></a>
+        {{/each}}
+      </div>
+      <div class="col s6">
+        <h2>Топ 5 резюме</h2>
+        {{#each cv}}
+        <a href={{href}}> <p>{{position}}</p></a>
+        {{/each}}
+      </div>
     </div>
-    {{#each arr}}
-        <div class="row">
-            <div class="col s12">
-                {{#each this}}
-                <div class="col s6">{{this}}</div>
-                    {{/each}}
-<!--                <div class="col s6">{{vacancy}}</div>-->
-            </div>
-        </div>
-    {{/each}}
+  </div>
+
+
+</div>
 </div>
