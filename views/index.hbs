@@ -16,13 +16,16 @@
       <a href="#" class="right" onclick="M.toast({html: 'added'})"><i class="material-icons">star</i></a>
       <h5>{{offer}}</h5>
 
-      <a class="btn modal-trigger additional" action="/info" href="#details">DETAILS</a>
+      <a class="btn modal-trigger additional" id={{href}} method="post" action="/info" href="#details">DETAILS</a>
 
       <div class="modal" id="details">
         <div class="modal-content">
-          <p>description: </p>
-          <p>experience: </p>
-          <p>location:  </p>
+          <h6>Описание</h6>
+          <p id="desc"></p>
+          <h6>Опыт</h6>
+          <p id="exp"></p>
+          <h6>Место</h6>
+          <p id="loc"></p>
           <a href={{href}}>details on hh.ru</a>
         </div>
       </div>
@@ -81,8 +84,29 @@ activeBtn.classList.add('active')
 
 
 const btn = document.querySelectorAll('.additional')
+const desc = document.querySelector('#desc');
+  const exp = document.querySelector('#exp');
+  const loc = document.querySelector('#loc');
 
-console.log(btn)
+btn.forEach(b => b.addEventListener('click', async (e) => {
+  e.preventDefault();
+  desc.innerHTML = '';
+  exp.innerHTML = '';
+  loc.innerHTML = '';
+  
+  const { id } = e.target;
+  
+  const response = await fetch(`/info`, {
+    method: 'post',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify({ id })
+  });
+
+  const result = await response.json();
+  desc.innerHTML = result.description;
+  exp.innerHTML = result.experience;
+  loc.innerHTML = result.location;
+}))
 
   
 
